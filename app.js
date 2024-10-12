@@ -30,7 +30,7 @@ app.get("/path/:last", (req, res) => {
         let fileData = JSON.parse(data.toString())
         fileData.forEach(dt => {
             if (dt.id == req.params.last) {
-                res.download(path.join(__dirname, `uploads/${dt.path.split("\\")[2]}`, dt.filename), dt.filename, (err) => {
+                res.download(path.join(__dirname, `${dt.path}`), dt.filename, (err) => {
                     if (err) {
                         res.status(500).write('Error downloading file');
                         res.end()
